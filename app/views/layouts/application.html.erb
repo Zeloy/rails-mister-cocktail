@@ -12,8 +12,13 @@
 
   <body>
     <%= render 'shared_components/navbar' %>
-    <div class="container" id="main">
+    <% if !(params[:controller] == 'cocktails' && params[:action] == 'index') %>
+      <div class="container" id="main">
+        <%= yield %>
+      </div>
+    <% else %>
       <%= yield %>
+    <% end %>
     </div>
     <%= render 'shared_components/footer' %>
   </body>

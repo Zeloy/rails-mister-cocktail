@@ -1,2 +1,15 @@
-<h1>Welcome to Mr Cocktails</h1>
 
+
+<h1 class="text-center">Cocktails</h1>
+
+<div class="container">
+  <div class="row">
+    <% @cocktails.all.each do |cocktail| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render 'shared_components/card', cocktail: cocktail  %>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <%= link_to 'New Cocktail', new_cocktail_path, class: "btn btn-danger" %>
+</div>

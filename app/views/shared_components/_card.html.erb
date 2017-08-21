@@ -1,0 +1,6 @@
+<%= link_to cocktail_path(cocktail) do %>
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path cocktail.photo? ? cocktail.photo : 'f8rv5gwycyw88nogszd4.jpg', height: 300, width: 400, crop: :fill %>')">
+    <h2><%= cocktail.name %></h2>
+  </div>
+<% end %>
+

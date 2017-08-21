@@ -1,7 +1,23 @@
 
-<h1>Add your dose</h1>
-<%= simple_form_for [@cocktail, @dose] do |f| %>
-   <%= f.input :description %>
-   <%= f.association :ingredient, collection: Ingredient.all %>
-   <%= f.submit %>
+<% if @cocktail.photo? %>
+  <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
 <% end %>
+
+<div class="row">
+  <div class="col-xs-6">
+    <h3><%= @cocktail.name %></h3>
+
+    <ul>
+      <% @cocktail.doses.each do |dose| %>
+        <li><%= dose.description %> of <%= dose.ingredient.name %> - <%= link_to 'remove', dose_path(dose), method: :delete %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-xs-6">
+    <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.input :description %>
+      <%= f.association :ingredient %>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
